@@ -8,7 +8,7 @@ const initialState = {
         { id: Math.random(), task: "learn CSS", isDone: true },
     ]
 }
-const ToDoReducer = (state = initialState, { type, payload }) => {
+const todoReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case ADD:
             return { ...state, todo: [...state.todo, payload] };
@@ -19,7 +19,7 @@ const ToDoReducer = (state = initialState, { type, payload }) => {
         case EDIT:
             return { ...state, todo: state.todo.map(elt => elt.id === payload.id ? { ...elt, task: payload.value } : elt) };
         default:
-            break;
+            return state;
     }
 }
-export default ToDoReducer
+export default todoReducer
